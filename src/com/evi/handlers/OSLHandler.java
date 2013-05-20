@@ -19,16 +19,18 @@ public class OSLHandler {
 		this.username = username;
 		this.question = question;
 		this.timeOut = test.getMaxTimeOut();
+		//build the query
 		String fullQuery = query + "question=" + question + "&api_account_id=" + username + "&api_password=" + password;
+		//Set up the httpClient and execute the query
 		DefaultHttpClient httpclient = new DefaultHttpClient();
 		HttpGet httpGet = new HttpGet(fullQuery);
 		try {
-			test.startTimer();
-			response = httpclient.execute(httpGet);
-			test.endTimer();
-			HttpEntity entity = response.getEntity();
+			test.startTimer(); //start the timer for the testcase
+			response = httpclient.execute(httpGet);//execute
+			test.endTimer();//stop the timer straight after
+			HttpEntity entity = response.getEntity();//get the response
 			String responseString = EntityUtils.toString(entity, "UTF-8");
-			test.setResponse(responseString);
+			test.setResponse(responseString);//set the response for the testcase
 			test.setResultReturnedInTime(test.workOutWhetherWithinTime());
 		} catch (Exception e) {
 			System.out
@@ -36,7 +38,5 @@ public class OSLHandler {
 		} finally {
 			httpGet.releaseConnection();
 		}
-
 	}
-
 }

@@ -17,5 +17,4 @@ public class DateInjection {
 		ft.setTimeZone(TimeZone.getTimeZone("UTC"));
 		return ft.format(dNow);
 	}
-
 }

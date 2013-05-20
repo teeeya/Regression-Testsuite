@@ -19,7 +19,6 @@ import com.evi.reporting.Report;
 public class Main {
 	private static ApplicationProperties applicationProperties;
 	private static TestHandler testHandler;
-
 	public static void main(String[] args) {
 		// Set the application Properties
 		applicationProperties = new ApplicationProperties(args);
