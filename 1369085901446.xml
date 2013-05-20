@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<testcase MaxTimeOut="5000" ExecutionTime="5503">
-    <Question>What%20is%20the%20time?</Question>
-    <ExpectedAnswer>May 20th 2013, 21:38</ExpectedAnswer>
-    <AnsweredWithinTime>false</AnsweredWithinTime>
-    <CorrectAnswerReturned>true</CorrectAnswerReturned>
-</testcase>

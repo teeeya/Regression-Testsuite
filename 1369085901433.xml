@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<testcase MaxTimeOut="5000" ExecutionTime="921">
-    <Question>How%20old%20is%20the%20Queen?</Question>
-    <ExpectedAnswer>87</ExpectedAnswer>
-    <AnsweredWithinTime>true</AnsweredWithinTime>
-    <CorrectAnswerReturned>true</CorrectAnswerReturned>
-</testcase>
