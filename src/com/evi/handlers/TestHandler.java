@@ -16,6 +16,12 @@ import org.w3c.dom.NodeList;
 import com.evi.reporting.Report;
 import com.evi.utils.DateInjection;
 
+/*
+ * This class 
+ * 1. Processes the config file - parses the xml and stores it
+ * 2. Executes the tests
+ * 
+ */
 public class TestHandler {
 	private Properties properties;
 	private ArrayList<Testcase> tests = new ArrayList<Testcase>();
@@ -41,23 +47,14 @@ public class TestHandler {
 			if (file.exists()) {
 				document = documentBuilder.parse(file);
 				Element docElement = document.getDocumentElement();
+				// nodelist of all of the questions in the xml
 				NodeList questionList = docElement
-						.getElementsByTagName("question"); // returns a
-															// nodelist of all
-															// of the questions
-															// in the xml
-				for (int i = 0; i < questionList.getLength(); i++) {// for every
-																	// item in
-																	// the
-																	// question
-																	// list
-																	// create a
-																	// testcase
+						.getElementsByTagName("question");
+				for (int i = 0; i < questionList.getLength(); i++) {
+					// for each question, create a testcase
 					Node node = questionList.item(i);
 					Element e = (Element) node;
-					// get question
-					NodeList inputList = e.getElementsByTagName("input"); 
-					// get answer
+					NodeList inputList = e.getElementsByTagName("input");
 					NodeList answerList = e
 							.getElementsByTagName("expectedAnswer");
 					/*
@@ -96,12 +93,16 @@ public class TestHandler {
 		}
 	}
 
+	/*
+	 * Check 1. Is the expected answer in the answer returned from the server 2.
+	 * Split the answer up by ',' and check each answer in the array
+	 */
 	public void executeTests() {
 		try {
 			documentBuilder = documentBuilderFactory.newDocumentBuilder();
-			int success=0;
+			int success = 0;
 			for (int i = 0; i < tests.size(); i++) {
-				 report = new Report(tests.get(i));
+				report = new Report(tests.get(i));
 				document = documentBuilder.parse(new StringBufferInputStream(
 						tests.get(i).getResponse()));
 				Element docElement = document.getDocumentElement();
@@ -117,28 +118,27 @@ public class TestHandler {
 				String[] expectedList = new String[expected.split(",").length];
 				answerList = value.replace("and", ",").split(",");
 				expectedList = expected.replace("and", ",").split(",");
-			
+
 				if (value.contains(expected)) {
 					System.out.println("Success" + value + expected);
 					tests.get(i).setResultOfQuestion(true);
 					report.logTestcaseResult(tests.get(i));
 				} else if (answerList.length == expectedList.length) {
-					
-					for (int j = 0; j < answerList.length; j++) {						
-						if(answerList[j].replace(",", "").trim().equals(expectedList[j].replace(",", "").trim())) {
+
+					for (int j = 0; j < answerList.length; j++) {
+						if (answerList[j].replace(",", "").trim().equals(
+								expectedList[j].replace(",", "").trim())) {
 							success++;
 						}
 					}
-					if(success==answerList.length){
+					if (success == answerList.length) {
 						System.out.println("Success all values matched");
 						tests.get(i).setResultOfQuestion(true);
 						report.logTestcaseResult(tests.get(i));
-					}
-					else{
+					} else {
 						tests.get(i).setResultOfQuestion(false);
 						report.logTestcaseResult(tests.get(i));
 					}
-
 				} else {
 					tests.get(i).setResultOfQuestion(false);
 					System.out

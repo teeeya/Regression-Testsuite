@@ -5,7 +5,9 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
-
+/*
+ * This class will execute all of the queries
+ */
 public class OSLHandler {
 	private int timeOut;
 	private String password, username, question, query;
@@ -20,7 +22,6 @@ public class OSLHandler {
 		String fullQuery = query + "question=" + question + "&api_account_id=" + username + "&api_password=" + password;
 		DefaultHttpClient httpclient = new DefaultHttpClient();
 		HttpGet httpGet = new HttpGet(fullQuery);
-
 		try {
 			test.startTimer();
 			response = httpclient.execute(httpGet);
