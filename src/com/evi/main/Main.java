@@ -27,7 +27,7 @@ public class Main {
 		testHandler = new TestHandler(applicationProperties.setup());
 		testHandler.processConfigFile();
 		testHandler.executeQuery();
-		testHandler.executeQATests();
+		testHandler.executeTests();
 		Report.outputReport();
 		
 	}

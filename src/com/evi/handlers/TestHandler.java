@@ -96,7 +96,7 @@ public class TestHandler {
 		}
 	}
 
-	public void executeQATests() {
+	public void executeTests() {
 		try {
 			documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			int success=0;
