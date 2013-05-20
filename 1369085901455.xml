@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<testcase MaxTimeOut="5000" ExecutionTime="7187">
+    <Question>Who%20was%20president%20of%20the%20US%20when%20Barack%20Obama%20was%20a%20teenager?</Question>
+    <ExpectedAnswer>Gerald Ford, Jimmy Carter, Ronald Reagan, Richard Nixon</ExpectedAnswer>
+    <AnsweredWithinTime>false</AnsweredWithinTime>
+    <CorrectAnswerReturned>true</CorrectAnswerReturned>
+</testcase>

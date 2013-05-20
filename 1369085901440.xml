@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<testcase MaxTimeOut="5000" ExecutionTime="6652">
+    <Question>What%20is%20the%20capital%20of%20France?</Question>
+    <ExpectedAnswer>Paris</ExpectedAnswer>
+    <AnsweredWithinTime>false</AnsweredWithinTime>
+    <CorrectAnswerReturned>true</CorrectAnswerReturned>
+</testcase>

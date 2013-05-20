@@ -27,8 +27,6 @@ public class Report {
 	}
 
 	public boolean logTestcaseResult(Testcase testcase) {
-		System.out.println(reports.size());
-		System.out.println("Created a success testcase for:"+testcase.getQuestion());
 		reports.put(testcase.getQuestion(), testcase);
 		return true;
 	}
@@ -52,19 +50,18 @@ public class Report {
 				if (output.exists() == false) {
 					output.mkdirs();
 				}
-
-				File outputFile = new File((new Date()).getTime()+ ".xml");
-
+				
+				File outputFile = new File("results/"+(new Date()).getTime()+ ".xml");
 				if (outputFile.exists() == false) {
 					outputFile.createNewFile();
 				} else {
 					System.out.println("Unable to create report ");
 				}
-
 				OutputStream outputStream = new FileOutputStream(outputFile);
 				
 				m.marshal(report, outputStream);
-				System.out.println("Outputted results");
+				System.out.println("Outputted results from to "
+						+ outputFile.getAbsolutePath());
 			}
 		} catch (IOException e) {
 			System.out.println("EXCEPTION" + e.getMessage());
